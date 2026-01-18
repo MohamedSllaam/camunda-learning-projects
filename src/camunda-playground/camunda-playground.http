@@ -1,4 +1,4 @@
-@camunda_playground_HostAddress = http://localhost:5069
+@camunda_playground_HostAddress = http://localhost:5177
 
 GET {{camunda_playground_HostAddress}}/weatherforecast/
 Accept: application/json
