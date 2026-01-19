@@ -34,9 +34,8 @@ public static class DependencyInjection
 {
     public static WebApplicationBuilder AddCamunda(this WebApplicationBuilder builder, Assembly assembly, bool bootstrap = false)
     {
-        var _isReadOnly = builder.Configuration.GetValue<bool>("IsReadOnlyInstance", false);
-        if (!_isReadOnly)
-        {
+        //var _isReadOnly = builder.Configuration.GetValue<bool>("IsReadOnlyInstance", false);
+        
             builder.Services.AddScoped<ICamundaService, CamundaService>();
 
             var zeebeOptions = builder.Configuration.GetSection(ZeebeConfiguration.Key).Get<ZeebeClientAcceleratorOptions?>();
@@ -109,7 +108,7 @@ public static class DependencyInjection
                     assembly
                 );
             }
-        }
+        
         return builder;
     }
 }
