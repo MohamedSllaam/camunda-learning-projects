@@ -17,7 +17,7 @@ internal class CamundaService(IZeebeClient zeebeClient, ILogger<CamundaService> 
         string? variablesJson = null;
         if (variablesObject is not null)
         {
-            variablesJson = JsonSerializer.Serialize(variablesObject, SerializationOptions.IgnoreNullSerializationOption);
+            variablesJson = JsonSerializer.Serialize(variablesObject, SerializationOptions.IgnoreNull);
             @event = @event.Variables(variablesJson);
         }
 
@@ -36,7 +36,7 @@ internal class CamundaService(IZeebeClient zeebeClient, ILogger<CamundaService> 
         string? variablesJson = null;
         if (variablesObject is not null)
         {
-            variablesJson = JsonSerializer.Serialize(variablesObject, SerializationOptions.IgnoreNullSerializationOption);
+            variablesJson = JsonSerializer.Serialize(variablesObject, SerializationOptions.IgnoreNull);
             @event = @event.Variables(variablesJson);
         }
 

@@ -10,7 +10,7 @@ using Zeebe.Client.Api.Builder;
 
 namespace camunda_playground;
 
-
+public class ApplicationPointer;
 public static class CamundaEnvironmentConfig
 {
     private const string ZeebeAddressEnvVar = "ZEEBE_ADDRESS";
