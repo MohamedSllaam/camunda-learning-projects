@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1ceapcp" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.40.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+  <bpmn:collaboration id="Collaboration_1kivlkj">
+    <bpmn:participant id="Participant_1af029i" name="Sync Naqaba Sectors" processRef="bg_sync_naqaba_sectors" />
+  </bpmn:collaboration>
+  <bpmn:process id="bg_sync_naqaba_sectors" name="[Background] Sync Naqaba Sectors" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Every 15mins">
+      <bpmn:outgoing>Flow_0zi3yi5</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_0br9b82">
+        <bpmn:timeCycle xsi:type="bpmn:tFormalExpression">R/PT15M</bpmn:timeCycle>
+      </bpmn:timerEventDefinition>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_0df85g4">
+      <bpmn:incoming>Flow_05dq5n3</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0zi3yi5" sourceRef="StartEvent_1" targetRef="Activity_0fe4y4m" />
+    <bpmn:sequenceFlow id="Flow_05dq5n3" sourceRef="Activity_0fe4y4m" targetRef="Event_0df85g4" />
+    <bpmn:serviceTask id="Activity_0fe4y4m" name="Sync Naqaba Sectors">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="Bg_SyncNaqabaSectorsWorker" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0zi3yi5</bpmn:incoming>
+      <bpmn:outgoing>Flow_05dq5n3</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1kivlkj">
+      <bpmndi:BPMNShape id="Participant_1af029i_di" bpmnElement="Participant_1af029i" isHorizontal="true">
+        <dc:Bounds x="200" y="70" width="520" height="190" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1r2fmiy_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="332" y="162" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="316" y="205" width="68" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0df85g4_di" bpmnElement="Event_0df85g4">
+        <dc:Bounds x="622" y="162" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0cd57cn_di" bpmnElement="Activity_0fe4y4m">
+        <dc:Bounds x="440" y="140" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0zi3yi5_di" bpmnElement="Flow_0zi3yi5">
+        <di:waypoint x="368" y="180" />
+        <di:waypoint x="440" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_05dq5n3_di" bpmnElement="Flow_05dq5n3">
+        <di:waypoint x="540" y="180" />
+        <di:waypoint x="622" y="180" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
